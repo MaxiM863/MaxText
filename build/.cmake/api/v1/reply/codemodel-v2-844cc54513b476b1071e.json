@@ -11,7 +11,8 @@
 					[
 						1
 					],
-					"jsonFile" : "directory-.-Debug-f6f22219c74102c3da70.json",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-1a372c04a6ac03271f51.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"

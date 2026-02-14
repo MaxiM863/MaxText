@@ -24,3 +24,9 @@ FILE "${CMAKE_CURRENT_BINARY_DIR}/MaxTextTargets.cmake"
 NAMESPACE MaxText::
 
 )
+
+# Install the export file
+install(EXPORT MaxTextTargets
+    FILE MaxTextTargets.cmake
+    DESTINATION lib/cmake/MaxText
+)
