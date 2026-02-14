@@ -5,7 +5,7 @@ project(MaxText)
 add_subdirectory(TextEngine)
 
 # Define a library target
-add_library(MaxText STATIC MaxTest.cpp)
+add_library(MaxText STATIC TextEngine/test.hpp)
 
 install(TARGETS MaxText
     EXPORT MaxTextTargets
