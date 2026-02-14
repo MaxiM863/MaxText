@@ -19,7 +19,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS MaxText::MaxText)
+foreach(_cmake_expected_target IN ITEMS MaxText::MaxTextMaxText)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -46,8 +46,8 @@ unset(_cmake_targets_not_defined)
 unset(_cmake_expected_targets)
 
 
-# Create imported target MaxText::MaxText
-add_library(MaxText::MaxText INTERFACE IMPORTED)
+# Create imported target MaxText::MaxTextMaxText
+add_library(MaxText::MaxTextMaxText INTERFACE IMPORTED)
 
 # This file does not depend on other imported targets which have
 # been exported from the same project but in a separate export set.
