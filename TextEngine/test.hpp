@@ -5,7 +5,7 @@
 
 namespace MaxText {
 
-    static class MaxTest {
+    static class MaxText {
     public:         
     static void testFunction() {
         std::cout << "Hello from MaxText!" << std::endl;
