@@ -58,6 +58,10 @@ endif()
 # Create imported target MaxText
 add_library(MaxText INTERFACE IMPORTED)
 
+set_target_properties(MaxText PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "/TextEngine"
+)
+
 # Load information for each installed configuration.
 file(GLOB _cmake_config_files "${CMAKE_CURRENT_LIST_DIR}/MaxTextTargets-*.cmake")
 foreach(_cmake_config_file IN LISTS _cmake_config_files)

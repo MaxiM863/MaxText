@@ -49,6 +49,10 @@ unset(_cmake_expected_targets)
 # Create imported target MaxText::MaxText
 add_library(MaxText::MaxText INTERFACE IMPORTED)
 
+set_target_properties(MaxText::MaxText PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "F:/Codes/MaxText/MaxText/TextEngine"
+)
+
 # This file does not depend on other imported targets which have
 # been exported from the same project but in a separate export set.
 
