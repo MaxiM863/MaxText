@@ -4,7 +4,7 @@ using namespace MaxText;
 
 int main() {
 
-    testFunction();
+    MaxTest::testFunction();
     
     
 

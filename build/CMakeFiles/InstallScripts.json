@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"F:/Codes/MaxText/MaxText/build/cmake_install.cmake",
+		"F:/Codes/MaxText/MaxText/build/TextEngine/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

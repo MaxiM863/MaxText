@@ -1,0 +1,11 @@
+F:/Codes/MaxText/MaxText/build/CMakeFiles/MaxText.dir
+F:/Codes/MaxText/MaxText/build/CMakeFiles/edit_cache.dir
+F:/Codes/MaxText/MaxText/build/CMakeFiles/rebuild_cache.dir
+F:/Codes/MaxText/MaxText/build/CMakeFiles/list_install_components.dir
+F:/Codes/MaxText/MaxText/build/CMakeFiles/install.dir
+F:/Codes/MaxText/MaxText/build/CMakeFiles/install/local.dir
+F:/Codes/MaxText/MaxText/build/TextEngine/CMakeFiles/edit_cache.dir
+F:/Codes/MaxText/MaxText/build/TextEngine/CMakeFiles/rebuild_cache.dir
+F:/Codes/MaxText/MaxText/build/TextEngine/CMakeFiles/list_install_components.dir
+F:/Codes/MaxText/MaxText/build/TextEngine/CMakeFiles/install.dir
+F:/Codes/MaxText/MaxText/build/TextEngine/CMakeFiles/install/local.dir
