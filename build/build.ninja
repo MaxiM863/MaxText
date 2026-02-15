@@ -109,6 +109,388 @@ build install\local: phony CMakeFiles\install\local.util
 #############################################
 # Utility command for edit_cache
 
+build _deps\glm-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build && "C:\Program Files\CMake\bin\cmake-gui.exe" -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\edit_cache: phony _deps\glm-build\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps\glm-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\rebuild_cache: phony _deps\glm-build\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps\glm-build\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps\glm-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\glm-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\install: phony _deps\glm-build\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps\glm-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\glm-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\install\local: phony _deps\glm-build\CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# F:/Codes/MaxText/MaxText/build/_deps/glm-src/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps\glm-build\glm\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build\glm && "C:\Program Files\CMake\bin\cmake-gui.exe" -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\glm\edit_cache: phony _deps\glm-build\glm\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps\glm-build\glm\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build\glm && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\glm\rebuild_cache: phony _deps\glm-build\glm\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps\glm-build\glm\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps\glm-build\glm\CMakeFiles\install.util: CUSTOM_COMMAND _deps\glm-build\glm\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build\glm && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\glm\install: phony _deps\glm-build\glm\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps\glm-build\glm\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\glm-build\glm\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\glm-build\glm && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps\glm-build\glm\install\local: phony _deps\glm-build\glm\CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# F:/Codes/MaxText/MaxText/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target CookbookWrapperLib
+
+
+#############################################
+# Order-only phony target for CookbookWrapperLib
+
+build cmake_object_order_depends_target_CookbookWrapperLib: phony || .
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\01_Instance_and_Devices\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\01_Instance_and_Devices\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\01_Instance_and_Devices
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\02_Image_Presentation\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\02_Image_Presentation\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\02_Image_Presentation
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\03_Command_Buffers_and_Synchronization\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\03_Command_Buffers_and_Synchronization\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\03_Command_Buffers_and_Synchronization
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\04_Resources_and_Memory\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\04_Resources_and_Memory\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\04_Resources_and_Memory
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\05_Descriptor_Sets\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\05_Descriptor_Sets\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\05_Descriptor_Sets
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\06_Render_Passes_and_Framebuffers\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\06_Render_Passes_and_Framebuffers\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\06_Render_Passes_and_Framebuffers
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\08_Graphics_and_Compute_Pipelines\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\08_Graphics_and_Compute_Pipelines\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\08_Graphics_and_Compute_Pipelines
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\09_Command_Recording_and_Drawing\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\09_Command_Recording_and_Drawing\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\09_Command_Recording_and_Drawing
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\10_Helper_Recipes\compacte.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files\10_Helper_Recipes\compacte.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\10_Helper_Recipes
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\VulkanFunctions.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files\VulkanFunctions.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\Common.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files\Common.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\Tools.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files\Tools.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\OS.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files\OS.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\Camera.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files\Camera.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\CookbookSampleFramework.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files\CookbookSampleFramework.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\OrbitingCamera.cpp.obj: CXX_COMPILER__CookbookWrapperLib_unscanned_Debug F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files\OrbitingCamera.cpp || cmake_object_order_depends_target_CookbookWrapperLib
+  CONFIG = Debug
+  DEFINES = -DVK_USE_PLATFORM_WIN32_KHR
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Source_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Library\Common_Files -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\External -IF:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-src\Samples\Common_Files
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  OBJECT_FILE_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target CookbookWrapperLib
+
+
+#############################################
+# Link the static library _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib
+
+build _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib: CXX_STATIC_LIBRARY_LINKER__CookbookWrapperLib_Debug _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\01_Instance_and_Devices\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\02_Image_Presentation\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\03_Command_Buffers_and_Synchronization\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\04_Resources_and_Memory\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\05_Descriptor_Sets\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\06_Render_Passes_and_Framebuffers\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\08_Graphics_and_Compute_Pipelines\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\09_Command_Recording_and_Drawing\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Source_Files\10_Helper_Recipes\compacte.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\VulkanFunctions.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\Common.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Library\Common_Files\Tools.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\OS.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\Camera.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\CookbookSampleFramework.cpp.obj _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\Samples\Common_Files\OrbitingCamera.cpp.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:X86
+  OBJECT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir\CookbookWrapperLib.pdb
+  TARGET_FILE = _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib
+  TARGET_PDB = _deps\cookbookwrapperlib-build\CookbookWrapperLib.pdb
+  TARGET_SUPPORT_DIR = _deps\cookbookwrapperlib-build\CMakeFiles\CookbookWrapperLib.dir
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-build && "C:\Program Files\CMake\bin\cmake-gui.exe" -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build _deps\cookbookwrapperlib-build\edit_cache: phony _deps\cookbookwrapperlib-build\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-build && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps\cookbookwrapperlib-build\rebuild_cache: phony _deps\cookbookwrapperlib-build\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps\cookbookwrapperlib-build\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\cookbookwrapperlib-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-build && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps\cookbookwrapperlib-build\install: phony _deps\cookbookwrapperlib-build\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps\cookbookwrapperlib-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\cookbookwrapperlib-build\all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-build && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps\cookbookwrapperlib-build\install\local: phony _deps\cookbookwrapperlib-build\CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# F:/Codes/MaxText/MaxText/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
 build TextEngine\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\Codes\MaxText\MaxText\build\TextEngine && "C:\Program Files\CMake\bin\cmake-gui.exe" -SF:\Codes\MaxText\MaxText -BF:\Codes\MaxText\MaxText\build"
   DESC = Running CMake cache editor...
@@ -162,6 +544,10 @@ build TextEngine\install\local: phony TextEngine\CMakeFiles\install\local.util
 # =============================================================================
 # Target aliases.
 
+build CookbookWrapperLib: phony _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib
+
+build CookbookWrapperLib.lib: phony _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib
+
 # =============================================================================
 # Folder targets.
 
@@ -170,7 +556,7 @@ build TextEngine\install\local: phony TextEngine\CMakeFiles\install\local.util
 #############################################
 # Folder: F:/Codes/MaxText/MaxText/build
 
-build all: phony MaxText TextEngine\all
+build all: phony MaxText _deps\glm-build\all _deps\cookbookwrapperlib-build\all TextEngine\all
 
 # =============================================================================
 
@@ -180,20 +566,41 @@ build all: phony MaxText TextEngine\all
 build TextEngine\all: phony
 
 # =============================================================================
+
+#############################################
+# Folder: F:/Codes/MaxText/MaxText/build/_deps/cookbookwrapperlib-build
+
+build _deps\cookbookwrapperlib-build\all: phony _deps\cookbookwrapperlib-build\CookbookWrapperLib.lib
+
+# =============================================================================
+
+#############################################
+# Folder: F:/Codes/MaxText/MaxText/build/_deps/glm-build
+
+build _deps\glm-build\all: phony _deps\glm-build\glm\all
+
+# =============================================================================
+
+#############################################
+# Folder: F:/Codes/MaxText/MaxText/build/_deps/glm-build/glm
+
+build _deps\glm-build\glm\all: phony
+
+# =============================================================================
 # Built-in targets
 
 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja F$:\Codes\MaxText\MaxText\build\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\TextEngine\cmake_install.cmake: RERUN_CMAKE | C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\4.2.3\CMakeCXXCompiler.cmake CMakeFiles\4.2.3\CMakeRCCompiler.cmake CMakeFiles\4.2.3\CMakeSystem.cmake F$:\Codes\MaxText\MaxText\CMakeLists.txt F$:\Codes\MaxText\MaxText\TextEngine\CMakeLists.txt
+build build.ninja F$:\Codes\MaxText\MaxText\build\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\_deps\glm-build\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\_deps\glm-build\glm\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\_deps\cookbookwrapperlib-build\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\TextEngine\cmake_install.cmake F$:\Codes\MaxText\MaxText\build\_deps\glm-build\CTestTestfile.cmake F$:\Codes\MaxText\MaxText\build\_deps\glm-build\glm\CTestTestfile.cmake: RERUN_CMAKE | C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FetchContent.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindGit.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\4.2.3\CMakeCCompiler.cmake CMakeFiles\4.2.3\CMakeCXXCompiler.cmake CMakeFiles\4.2.3\CMakeRCCompiler.cmake CMakeFiles\4.2.3\CMakeSystem.cmake F$:\Codes\MaxText\MaxText\CMakeLists.txt F$:\Codes\MaxText\MaxText\TextEngine\CMakeLists.txt _deps\cookbookwrapperlib-src\CMakeLists.txt _deps\glm-src\CMakeLists.txt _deps\glm-src\glm\CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\4.2.3\CMakeCXXCompiler.cmake CMakeFiles\4.2.3\CMakeRCCompiler.cmake CMakeFiles\4.2.3\CMakeSystem.cmake F$:\Codes\MaxText\MaxText\CMakeLists.txt F$:\Codes\MaxText\MaxText\TextEngine\CMakeLists.txt: phony
+build C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FetchContent.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindGit.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake C$:\Program$ Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\4.2.3\CMakeCCompiler.cmake CMakeFiles\4.2.3\CMakeCXXCompiler.cmake CMakeFiles\4.2.3\CMakeRCCompiler.cmake CMakeFiles\4.2.3\CMakeSystem.cmake F$:\Codes\MaxText\MaxText\CMakeLists.txt F$:\Codes\MaxText\MaxText\TextEngine\CMakeLists.txt _deps\cookbookwrapperlib-src\CMakeLists.txt _deps\glm-src\CMakeLists.txt _deps\glm-src\glm\CMakeLists.txt: phony
 
 
 #############################################

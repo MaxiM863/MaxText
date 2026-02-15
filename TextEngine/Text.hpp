@@ -14,14 +14,20 @@ class Text{
     QueueParameters                                                         GraphicsQueue;
     VkCommandBuffer                                                         CommandBuffer;  
 
+    LetterObj**                                                             letters;
+    int                                                                     maxLinesScreen;
 
-        Text(VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& Swapchain, VkFormat DepthFormat, OrbitingCamera& camera, VkRenderPass renderPass){
+
+        Text(VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& Swapchain, VkFormat DepthFormat, OrbitingCamera& camera, VkRenderPass renderPass, int maxLinesScreen){
         
             this->logicalDevice = logicalDevice;
             this->PhysicalDevice = PhysicalDevice;
             this->GraphicsQueue = GraphicsQueue;
             this->CommandBuffer = CommandBuffer;
             this->swapchainSize.extent = Swapchain.Size;
+
+            letters = new LetterObj*[maxLinesScreen];
+            this->maxLinesScreen = maxLinesScreen;
         }
 
         ~Text();
@@ -62,7 +68,17 @@ class Text{
                 VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, GraphicsQueue.Handle, CommandBuffer, {} ) ) 
                 {
                     return false;
-                }           
+                }   
+                
+            for(int i = 0; i < maxLinesScreen; i++)
+            {
+                letters[i] = new LetterObj();
+                
+                if( !letters[i]->Initialize( logicalDevice, PhysicalDevice, GraphicsQueue, CommandBuffer, SwapchainParameters{ swapchainSize }, DepthFormat, camera, image_data, width, height, renderPass ) )
+                {
+                    return false;
+                }
+            }   
         };
         
 

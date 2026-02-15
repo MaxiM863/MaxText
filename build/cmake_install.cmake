@@ -54,6 +54,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("F:/Codes/MaxText/MaxText/build/_deps/glm-build/cmake_install.cmake")
+  include("F:/Codes/MaxText/MaxText/build/_deps/cookbookwrapperlib-build/cmake_install.cmake")
   include("F:/Codes/MaxText/MaxText/build/TextEngine/cmake_install.cmake")
 
 endif()
