@@ -5,7 +5,7 @@
 
 namespace MaxText {
 
-    static class MaxText {
+    class MaxText {
     public:         
     static void testFunction() {
 
