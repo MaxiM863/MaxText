@@ -1,8 +1,11 @@
 #include <vector>
 
+#include "CookbookSampleFramework.h"
+
 #include "LettersObj.hpp"
 
-class Text{
+class Text 
+{
 
     public:
 
@@ -18,13 +21,12 @@ class Text{
     int                                                                     maxLinesScreen;
 
 
-        Text(VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& Swapchain, VkFormat DepthFormat, OrbitingCamera& camera, VkRenderPass renderPass, int maxLinesScreen){
+        Text(VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& swapchain, VkFormat DepthFormat, OrbitingCamera& camera, VkRenderPass renderPass, int maxLinesScreen){
         
             this->logicalDevice = logicalDevice;
             this->PhysicalDevice = PhysicalDevice;
             this->GraphicsQueue = GraphicsQueue;
             this->CommandBuffer = CommandBuffer;
-            this->swapchainSize.extent = Swapchain.Size;
 
             letters = new LetterObj*[maxLinesScreen];
             this->maxLinesScreen = maxLinesScreen;
@@ -32,7 +34,7 @@ class Text{
 
         ~Text();
 
-        bool Initialize()
+        bool Initialize(SwapchainParameters& Swapchain, VkFormat DepthFormat, VkRenderPass renderPass)
         {
             InitVkDestroyer( logicalDevice, Sampler );        
             InitVkDestroyer( logicalDevice, Image );
@@ -68,32 +70,106 @@ class Text{
                 VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, GraphicsQueue.Handle, CommandBuffer, {} ) ) 
                 {
                     return false;
-                }   
+                }
                 
+            std::fstream file("Data/Textures/DataGlyphs.bin", std::ios::in | std::ios::binary);
+            
+            char* buffer = new char[2 * 1024];
+
+            file.read((char*)&buffer, 2 * 1024);
+
+            file.close();
+
             for(int i = 0; i < maxLinesScreen; i++)
             {
                 letters[i] = new LetterObj();
                 
-                if( !letters[i]->Initialize( logicalDevice, PhysicalDevice, GraphicsQueue, CommandBuffer, SwapchainParameters{ swapchainSize }, DepthFormat, camera, image_data, width, height, renderPass ) )
+                if( !letters[i]->Initialize( logicalDevice, PhysicalDevice, GraphicsQueue, CommandBuffer, Swapchain, DepthFormat, renderPass, *Sampler, *Image, *ImageView, "allo monde!", buffer ) )
                 {
                     return false;
                 }
-            }   
+            }
         };
-        
 
         void printLine(std::string line)
         {
-           
-        }
-
-        bool draw(VkCommandBuffer CommandBuffer, VkFramebuffer framebuffer, VkRect2D sizew)
-        {
             
-            return true;
         }
 
+        bool draw(VkCommandBuffer CommandBuffer, VkFramebuffer framebuffer, VkRect2D sizew, QueueParameters PresentQueue, SwapchainParameters& Swapchain, VkRenderPass RenderPass, VkDevice LogicalDevice, std::vector<FrameResources>& FramesResources)
+        {            
+            auto prepare_frame = [&]( std::vector<VkCommandBuffer> command_buffer, uint32_t swapchain_image_index, VkFramebuffer framebuffer ) 
+            {
+                int i = 0;
+                
+                if( !BeginCommandBufferRecordingOperation( command_buffer[i], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT, nullptr ) ) {
+                    return false;
+                }
         
+                if( PresentQueue.FamilyIndex != GraphicsQueue.FamilyIndex ) {
+                    ImageTransition image_transition_before_drawing = {
+                        Swapchain.Images[swapchain_image_index],  // VkImage              Image
+                        VK_ACCESS_MEMORY_READ_BIT,                // VkAccessFlags        CurrentAccess
+                        VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,     // VkAccessFlags        NewAccess
+                        VK_IMAGE_LAYOUT_UNDEFINED,                // VkImageLayout        CurrentLayout
+                        VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, // VkImageLayout        NewLayout
+                        PresentQueue.FamilyIndex,                 // uint32_t             CurrentQueueFamily
+                        GraphicsQueue.FamilyIndex,                // uint32_t             NewQueueFamily
+                        VK_IMAGE_ASPECT_COLOR_BIT                 // VkImageAspectFlags   Aspect
+                    };
+                
+                    SetImageMemoryBarrier( command_buffer[i], VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, { image_transition_before_drawing } );
+                }
+            
+                // Drawing
+                BeginRenderPass( command_buffer[i], RenderPass , framebuffer, {{0,0}, Swapchain.Size}, { { 1.0f, 1.0f, 1.0f, 1.0f }, { 1.0f, 0 } }, VK_SUBPASS_CONTENTS_INLINE );
+
+                VkViewport viewport = {
+                    0.0f,                                       // float    x
+                    0.0f,                                       // float    y
+                    static_cast<float>(sizew.extent.width),   // float    width
+                    static_cast<float>(sizew.extent.height),  // float    height
+                    0.0f,                                       // float    minDepth
+                    1.0f,                                       // float    maxDepth
+                };
+
+                SetViewportStateDynamically( CommandBuffer, 0, { viewport } );
+
+                VkRect2D scissor = 
+                {
+                    {                                           // VkOffset2D     offset
+                        0,                                          // int32_t        x
+                        0                                           // int32_t        y
+                    },
+                    {                                           // VkExtent2D     extent
+                        sizew.extent.width,                       // uint32_t       width
+                        sizew.extent.height                       // uint32_t       height
+                    }
+                };
+                
+                SetScissorStateDynamically( CommandBuffer, 0, { scissor } );
+
+                for(int i = 0; i < maxLinesScreen; i++)
+                {
+                    if( !letters[i]->draw_1(CommandBuffer, framebuffer, sizew) )
+                    {
+                        return false;
+                    }
+                }                
+
+                EndRenderPass( command_buffer[i] );
+
+                if( !EndCommandBufferRecordingOperation( command_buffer[i] ) ) {
+                    return false;
+                }
+                
+                return true;
+            };
+
+            return IncreasePerformanceThroughIncreasingTheNumberOfSeparatelyRenderedFrames( LogicalDevice, GraphicsQueue.Handle, PresentQueue.Handle,
+            Swapchain.Handle.Object.Handle, Swapchain.Size, Swapchain.ImageViewsRaw, RenderPass, {}, prepare_frame, FramesResources );
+        }    
+
         private:
 
             VkDevice logicalDevice;

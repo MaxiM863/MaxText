@@ -20,16 +20,13 @@ class LetterObj
     
     public:
 
-    LetterObj(){};
-    
-    
-    
+    LetterObj(){};    
 
     std::vector<VulkanCookbook::Mesh>                                       Model;
 
     uint32_t                                                                stride;
 
-    std::vector<VkBuffer>                                                   vectorVertexBuffer;
+    VulkanCookbook::VkDestroyer( VulkanCookbook::VkBuffer )                 bufferVertex;
     std::vector<VkDeviceMemory>                                             vectorVertexBufferMemory;
 
     VulkanCookbook::VkDestroyer( VulkanCookbook::VkBuffer )                 StagingBuffer;
@@ -54,59 +51,77 @@ class LetterObj
 
     VulkanCookbook::Matrix4x4                                               model_matrix;
 
+    uint32_t                                                                charSetSize;
+
 
 public:
 
-    bool Initialize( VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& Swapchain, VkFormat DepthFormat, OrbitingCamera& camera, std::vector<unsigned char> image_data, int width, int height, VkRenderPass RenderPass )
-    {
-    
-        glyphWidth = width;
-        glyphHeight = height;
+    bool Initialize( VkDevice logicalDevice, VkPhysicalDevice PhysicalDevice, QueueParameters& GraphicsQueue, VkCommandBuffer& CommandBuffer, SwapchainParameters& Swapchain, VkFormat DepthFormat, VkRenderPass RenderPass, const VkSampler& Sampler, const VkImage& Image, const VkImageView& ImageView, std::string charSet, char* bufferDeltaCharacters )
+    {        
+        // This model send The relative position from 0, of each character of the string to be printed, and the relative position of the texture coordinates of each character in the texture atlas. The texture atlas is a 32x32 grid of characters, so each character occupies a 1/32th by 1/32th portion of the texture. 
+        // The relative position of the texture coordinates is calculated based on the ASCII value of the character, which determines its position in the grid. For example, if the ASCII value of a character is 65 (which corresponds to 'A'). The relative position of the texture coordinates for 'A' would be 
+        // (65 % 32) / 32.0 for the x-coordinate and (65 / 32) / 32.0 for the y-coordinate. This way, the shader can sample the correct portion of the texture atlas to render each character. And the width and height of each character in the texture atlas are also stored in the model, which can be used to calculate
+        // the correct texture position when rendering the characters on the screen.
+
+        charSetSize = charSet.size();
+        
+        char* buffer = new char[charSet.size() * (3 + 4) * sizeof(float)];
+ 
+        // Relative position of the character in the string
+        float relative_x = 0.0f; // Adding a small gap between characters
+        float relative_y = 0.0f;
+        
+        for(int i = 0; i < charSet.size(); i++)
+        {
+            char c = charSet[i];
+            uint32_t ascii_value = static_cast<uint32_t>(c);
+            float x = (ascii_value % 32) / 32.0f;
+            float y = (ascii_value / 32) / 32.0f;
+            float width = bufferDeltaCharacters[i * 2 + 0];
+            float height = bufferDeltaCharacters[i * 2 + 1];
+
+            // Store the data in the buffer
+            buffer[i * (3 + 4) * sizeof(float) + 0] = relative_x;
+            buffer[i * (3 + 4) * sizeof(float) + 1] = relative_y;
+            buffer[i * (3 + 4) * sizeof(float) + 2] = 0.0f; // Z coordinate, not used for text rendering
+
+            relative_x += width + 0.02f; // Adding a small gap between characters
+
+            buffer[i * (3 + 4) * sizeof(float) + 3] = x;
+            buffer[i * (3 + 4) * sizeof(float) + 4] = y;
+            buffer[i * (3 + 4) * sizeof(float) + 5] = width;
+            buffer[i * (3 + 4) * sizeof(float) + 6] = height;
+        }
+         
 
         
-        
-        Mesh mesh;
 
-        if( !VulkanCookbook::Load3DModelFromObjFile( "Data/Models/glyphQuad.obj", true, true, true, true, mesh, &stride ) ) {
+        InitVkDestroyer( logicalDevice, bufferVertex );
+        if( !VulkanCookbook::CreateBuffer( logicalDevice, sizeof( float ) * charSet.size() * (3 + 4), VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, *bufferVertex ) )
+        {
+
             return false;
         }
 
-        Model.push_back(mesh);
-
-        for(int i = 0; i < Model.size(); i++)
-        {//InitVkDestroyer( *LogicalDevice, *vectorVertexBufferMemory.at(i) );
-            VkBuffer tmpB;
-            vectorVertexBuffer.push_back(tmpB);
-
-            //InitVkDestroyer( *LogicalDevice, vectorVertexBuffer );
-            if( !VulkanCookbook::CreateBuffer( logicalDevice, sizeof( float ) * Model.at(i).Data.size(),
-                VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, vectorVertexBuffer.at(i) ) ) 
-            {
-
-                return false;
-            }
-
             
-            int a = 0;
-            VkDeviceMemory tmpB2;
-            vectorVertexBufferMemory.push_back(tmpB2);   
+        int a = 0;
+        VkDeviceMemory tmpB2;
+        vectorVertexBufferMemory.push_back(tmpB2);   
 
-            if( !VulkanCookbook::AllocateAndBindMemoryObjectToBuffer( PhysicalDevice, logicalDevice, vectorVertexBuffer.at(i), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, vectorVertexBufferMemory.at(i) ) ) {
-                return false;
-            }
-
-            if( !VulkanCookbook::UseStagingBufferToUpdateBufferWithDeviceLocalMemoryBound( PhysicalDevice, logicalDevice, sizeof( Model.at(i).Data[0] ) * Model.at(i).Data.size(),
-                &Model.at(i).Data[0], vectorVertexBuffer.at(i), 0, 0, VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_VERTEX_INPUT_BIT,
-                GraphicsQueue.Handle, CommandBuffer, {} ) )
-            {
-                return false;
-            }
+        if( !VulkanCookbook::AllocateAndBindMemoryObjectToBuffer( PhysicalDevice, logicalDevice, *bufferVertex, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, tmpB2 ) ) {
+            return false;
         }
+
+        if( !VulkanCookbook::UseStagingBufferToUpdateBufferWithDeviceLocalMemoryBound( PhysicalDevice, logicalDevice, sizeof( float ) * charSet.size() * (3 + 4), buffer, *bufferVertex, 0, 0, VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_VERTEX_INPUT_BIT,
+            GraphicsQueue.Handle, CommandBuffer, {} ) )
+        {
+            return false;
+        }        
 
         // Staging buffer
         InitVkDestroyer( logicalDevice, StagingBuffer );
       
-        if( !VulkanCookbook::CreateBuffer( logicalDevice, 1024 * sizeof(float), VK_BUFFER_USAGE_TRANSFER_SRC_BIT, *StagingBuffer ) ) {
+        if( !VulkanCookbook::CreateBuffer( logicalDevice, 2 * 16 * sizeof(float), VK_BUFFER_USAGE_TRANSFER_SRC_BIT, *StagingBuffer ) ) {
             return false;
         }
       
@@ -120,13 +135,13 @@ public:
         InitVkDestroyer( logicalDevice, UniformBuffer );
         InitVkDestroyer( logicalDevice, UniformBufferMemory );
       
-        if( !VulkanCookbook::CreateUniformBuffer( PhysicalDevice, logicalDevice, 1024 * sizeof( float ), VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+        if( !VulkanCookbook::CreateUniformBuffer( PhysicalDevice, logicalDevice, 2 * 16 * sizeof( float ), VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
             *UniformBuffer, *UniformBufferMemory ) ) 
         {
             return false;
         }
 
-        if( !UpdateStagingBuffer( true, logicalDevice, Swapchain.Size.width, Swapchain.Size.height, camera.GetMatrix() ) ) 
+        if( !UpdateStagingBuffer( true, logicalDevice, Swapchain.Size.width, Swapchain.Size.height, PrepareTranslationMatrix(0.0f,0.0f,0.0f))) // not important, not in loop game
         {
             return false;
         }
@@ -189,7 +204,7 @@ public:
             {
                 *UniformBuffer,                           // VkBuffer                             buffer
                 0,                                        // VkDeviceSize                         offset
-                1024*sizeof(float)                             // VkDeviceSize                         range
+                2*16*sizeof(float)                             // VkDeviceSize                         range
             }
             }
         };
@@ -201,8 +216,8 @@ public:
             VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER,  // VkDescriptorType                     TargetDescriptorType
             {                                           // std::vector<VkDescriptorImageInfo>   ImageInfos
                 {
-                    *Sampler,                                 // VkSampler                            sampler
-                    *ImageView,                               // VkImageView                          imageView
+                    Sampler,                                 // VkSampler                            sampler
+                    ImageView,                               // VkImageView                          imageView
                     VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL  // VkImageLayout                        imageLayout
                 }
             }
@@ -214,21 +229,13 @@ public:
 
         // Graphics pipeline
 
-        std::vector<VkPushConstantRange> push_constant_ranges = {
-            {
-            VK_SHADER_STAGE_FRAGMENT_BIT,   // VkShaderStageFlags     stageFlags
-            0,                              // uint32_t               offset
-            sizeof( float ) * 4             // uint32_t               size
-            }
-        };
-
         InitVkDestroyer( logicalDevice, PipelineLayout );
         if( !VulkanCookbook::CreatePipelineLayout( logicalDevice, { *DescriptorSetLayout }, {}, *PipelineLayout ) ) {
             return false;
         }
 
         std::vector<unsigned char> vertex_shader_spirv;
-        if( !VulkanCookbook::GetBinaryFileContents( "Data/Shaders/11 Lighting/01 Rendering a geometry with vertex diffuse lighting/shader.vert.spv", vertex_shader_spirv ) ) {
+        if( !VulkanCookbook::GetBinaryFileContents( "Data/Shaders/11 Lighting/01 Rendering a geometry with vertex diffuse lighting/b.spv", vertex_shader_spirv ) ) {
             return false;
         }
 
@@ -249,6 +256,17 @@ public:
             return false;
         }
 
+        std::vector<unsigned char> geometry_shader_spirv;
+        if( !VulkanCookbook::GetBinaryFileContents( "Data/Shaders/11 Lighting/01 Rendering a geometry with vertex diffuse lighting/c.spv", geometry_shader_spirv ) ) {
+            return false;
+        }
+
+        VulkanCookbook::VkDestroyer(VulkanCookbook::VkShaderModule) geometry_shader_spirv_module;
+        InitVkDestroyer( logicalDevice, geometry_shader_spirv_module );
+        if( !VulkanCookbook::CreateShaderModule( logicalDevice, geometry_shader_spirv, *geometry_shader_spirv_module ) ) {
+            return false;
+        }
+
         std::vector<VulkanCookbook::ShaderStageParameters> shader_stage_params = 
         {
             {
@@ -262,6 +280,12 @@ public:
                 *fragment_shader_module,          // VkShaderModule               ShaderModule
                 "main",                           // char const                 * EntryPointName
                 nullptr                           // VkSpecializationInfo const * SpecializationInfo
+            },
+            {
+                VK_SHADER_STAGE_GEOMETRY_BIT,     // VkShaderStageFlagBits        ShaderStage
+                *geometry_shader_spirv_module,          // VkShaderModule               ShaderModule
+                "main",                           // char const                 * EntryPointName
+                nullptr                           // VkSpecializationInfo const * SpecializationInfo
             }
         };
 
@@ -272,7 +296,7 @@ public:
         {
             {
             0,                            // uint32_t                     binding
-            stride,                // uint32_t                     stride
+            (3 + 4) * sizeof(float),                 // uint32_t                     stride
             VK_VERTEX_INPUT_RATE_VERTEX   // VkVertexInputRate            inputRate
             }
         };
@@ -285,29 +309,11 @@ public:
             VK_FORMAT_R32G32B32_SFLOAT,                                               // VkFormat   format
             0                                                                         // uint32_t   offset
             },
-            { // Normal vector
+            { // Texcoords
             1,                                                                        // uint32_t   location
             0,                                                                        // uint32_t   binding
-            VK_FORMAT_R32G32B32_SFLOAT,                                               // VkFormat   format
-            3 * sizeof( float )                                                       // uint32_t   offset
-            },
-            { // Texcoords
-            2,                                                                        // uint32_t   location
-            0,                                                                        // uint32_t   binding
-            VK_FORMAT_R32G32_SFLOAT,                                                  // VkFormat   format
-            6 * sizeof( float )                                                       // uint32_t   offset
-            },
-            { // Tangent vector
-            3,                                                                        // uint32_t   location
-            0,                                                                        // uint32_t   binding
-            VK_FORMAT_R32G32B32_SFLOAT,                                               // VkFormat   format
-            8 * sizeof( float )                                                       // uint32_t   offset
-            },
-            { // bitangent vector
-            4,                                                                        // uint32_t   location
-            0,                                                                        // uint32_t   binding
-            VK_FORMAT_R32G32B32_SFLOAT,                                               // VkFormat   format
-            11 * sizeof( float )                                                      // uint32_t   offset
+            VK_FORMAT_A8B8G8R8_UINT_PACK32,                                           // VkFormat   format
+            3 * sizeof( float )
             }
         };
 
@@ -396,9 +402,8 @@ public:
 
     bool draw_1(VkCommandBuffer CommandBuffer, VkFramebuffer framebuffer, VkRect2D sizew)
     {
-        if( true ) {
+        if( UpdateUniformBuffer ) {
 
-          
             UpdateUniformBuffer = false;
 
             BufferTransition pre_transfer_transition = {
@@ -414,7 +419,7 @@ public:
               {
                 0,                        // VkDeviceSize     srcOffset
                 0,                        // VkDeviceSize     dstOffset
-                2 * 16 * sizeof( float )  // VkDeviceSize     size
+                2*16 * sizeof( float )    // VkDeviceSize     size
               }
             };
             CopyDataBetweenBuffers( CommandBuffer, *StagingBuffer, *UniformBuffer, regions );
@@ -426,47 +431,19 @@ public:
               VK_QUEUE_FAMILY_IGNORED,      // uint32_t         CurrentQueueFamily
               VK_QUEUE_FAMILY_IGNORED       // uint32_t         NewQueueFamily
             };
-            SetBufferMemoryBarrier( CommandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_VERTEX_SHADER_BIT, { post_transfer_transition } );
-          
+            SetBufferMemoryBarrier( CommandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_VERTEX_SHADER_BIT, { post_transfer_transition } );          
         }
 
         
 
-        VkViewport viewport = {
-          0.0f,                                       // float    x
-          0.0f,                                       // float    y
-          static_cast<float>(sizew.extent.width),   // float    width
-          static_cast<float>(sizew.extent.height),  // float    height
-          0.0f,                                       // float    minDepth
-          1.0f,                                       // float    maxDepth
-        };
-        SetViewportStateDynamically( CommandBuffer, 0, { viewport } );
 
-        VkRect2D scissor = {
-          {                                           // VkOffset2D     offset
-            0,                                          // int32_t        x
-            0                                           // int32_t        y
-          },
-          {                                           // VkExtent2D     extent
-            sizew.extent.width,                       // uint32_t       width
-            sizew.extent.height                       // uint32_t       height
-          }
-        };
+        BindVertexBuffers( CommandBuffer, 0, {{ *bufferVertex, 0 }} );
         
-        SetScissorStateDynamically( CommandBuffer, 0, { scissor } );
-
-
-        BindVertexBuffers( CommandBuffer, 0, {{ vectorVertexBuffer.at(0), 0 }} );
-              
         BindDescriptorSets( CommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, *PipelineLayout, 0, {DescriptorSets[0]}, { 0,0 } );
         
-        std::array<float, 4> light_position = { 0.0f, 10.0f, 0.0f, 0.0f };
-        ProvideDataToShadersThroughPushConstants( CommandBuffer, *PipelineLayout, VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof( float ) * 4, &light_position[0] );
-            
         BindPipelineObject( CommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, *Pipeline );
 
-        DrawGeometry( CommandBuffer, Model.at(0).Parts[0].VertexCount, 1, 0, 0 );
-                
+        DrawGeometry( CommandBuffer, charSetSize, 1, 0, 0 );                
         
 
         return true;
@@ -481,7 +458,7 @@ public:
 
             UpdateUniformBuffer = true;
 
-            VulkanCookbook::Matrix4x4 model_view_matrix =  PrepareScalingMatrix((float)glyphWidth * 1.0f, (float)glyphHeight * 1.0f, 1.0f);
+            VulkanCookbook::Matrix4x4 model_view_matrix =  PrepareScalingMatrix(1.0f, 1.0f, 1.0f);
 
             if( !VulkanCookbook::MapUpdateAndUnmapHostVisibleMemory( LogicalDevice, *StagingBufferMemory, 0, sizeof( model_view_matrix[0] ) * model_view_matrix.size(), &model_view_matrix[0], true, nullptr ) ) {
                 return false;
@@ -496,12 +473,5 @@ public:
         } 
 
         return true;
-    }
-    
-    // Comparator to sort by x, then y, then z
-    bool comparePoints(const glm::vec3 &a, const glm::vec3 &b) {
-        if (a.x != b.x) return a.x < b.x; // Sort by x first
-        if (a.y != b.y) return a.y < b.y; // Then by y
-        return a.z < b.z;                 // Finally by z
     }
 };
