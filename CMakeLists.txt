@@ -26,8 +26,8 @@ FetchContent_MakeAvailable(CookbookWrapperLib)
 # Define a library target
 add_library(MaxText INTERFACE LettersObj.hpp)
 target_include_directories(MaxText INTERFACE
-$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/TextEngine>
-$<INSTALL_INTERFACE:/TextEngine> # relative to install prefix
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+$<INSTALL_INTERFACE:> # relative to install prefix
 )
 
 install(TARGETS MaxText
