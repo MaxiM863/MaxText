@@ -64,7 +64,7 @@ public:
         // the correct texture position when rendering the characters on the screen.
 
         charSetSize = charSet.size();
-        
+
         char* buffer = new char[charSet.size() * (3 + 4) * sizeof(float)];
  
         // Relative position of the character in the string
@@ -402,9 +402,9 @@ public:
 
     bool draw_1(VkCommandBuffer CommandBuffer, VkFramebuffer framebuffer, VkRect2D sizew)
     {
-        if( UpdateUniformBuffer ) {
+        if( true ) {
 
-            UpdateUniformBuffer = false;
+            //UpdateUniformBuffer = false;
 
             BufferTransition pre_transfer_transition = {
               *UniformBuffer,               // VkBuffer         Buffer

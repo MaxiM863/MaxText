@@ -1,13 +1,13 @@
-#version 330 core
+#version 450
 
 layout(points) in; // Input primitive type: points
 layout(triangle_strip, max_vertices = 6) out;
 
-in VS_OUT {
+layout(location = 0) in VS_OUT {
     vec4 texCoord;
 } gs_in[];
 
-out GS_OUT {
+layout(location = 0) out GS_OUT {
     vec4 texCoord;
 } gs_out;
 
@@ -38,5 +38,5 @@ void main() {
     gs_out.texCoord = gs_in[0].texCoord; // Pass texture coordinate
     EmitVertex();
 
-EndPrimitive(); // End the current primitive
+    EndPrimitive(); // End the current primitive
 }
