@@ -23,11 +23,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(CookbookWrapperLib)
 
-add_subdirectory(TextEngine)
-
 # Define a library target
-add_library(MaxText STATIC TextEngine/LettersObj.cpp)
-target_include_directories(MaxText PUBLIC
+add_library(MaxText INTERFACE LettersObj.hpp)
+target_include_directories(MaxText INTERFACE
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/TextEngine>
 $<INSTALL_INTERFACE:/TextEngine> # relative to install prefix
 )
