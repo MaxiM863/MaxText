@@ -97,77 +97,14 @@ class Text
         }
 
         bool draw(VkCommandBuffer CommandBuffer, VkFramebuffer framebuffer, VkRect2D sizew, QueueParameters PresentQueue, SwapchainParameters& Swapchain, VkRenderPass RenderPass, VkDevice LogicalDevice, std::vector<FrameResources>& FramesResources)
-        {            
-            auto prepare_frame = [&]( std::vector<VkCommandBuffer> command_buffer, uint32_t swapchain_image_index, VkFramebuffer framebuffer ) 
+        {      
+            for(int i = 0; i < maxLinesScreen; i++)
             {
-                int i = 0;
-                
-                if( !BeginCommandBufferRecordingOperation( command_buffer[i], VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT, nullptr ) ) {
+                if( !letters[i]->draw_1(CommandBuffer, framebuffer, sizew) )
+                {
                     return false;
                 }
-        
-                if( PresentQueue.FamilyIndex != GraphicsQueue.FamilyIndex ) {
-                    ImageTransition image_transition_before_drawing = {
-                        Swapchain.Images[swapchain_image_index],  // VkImage              Image
-                        VK_ACCESS_MEMORY_READ_BIT,                // VkAccessFlags        CurrentAccess
-                        VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,     // VkAccessFlags        NewAccess
-                        VK_IMAGE_LAYOUT_UNDEFINED,                // VkImageLayout        CurrentLayout
-                        VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, // VkImageLayout        NewLayout
-                        PresentQueue.FamilyIndex,                 // uint32_t             CurrentQueueFamily
-                        GraphicsQueue.FamilyIndex,                // uint32_t             NewQueueFamily
-                        VK_IMAGE_ASPECT_COLOR_BIT                 // VkImageAspectFlags   Aspect
-                    };
-                
-                    SetImageMemoryBarrier( command_buffer[i], VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, { image_transition_before_drawing } );
-                }
-            
-                // Drawing
-                BeginRenderPass( command_buffer[i], RenderPass , framebuffer, {{0,0}, Swapchain.Size}, { { 1.0f, 1.0f, 1.0f, 1.0f }, { 1.0f, 0 } }, VK_SUBPASS_CONTENTS_INLINE );
-
-                VkViewport viewport = {
-                    0.0f,                                       // float    x
-                    0.0f,                                       // float    y
-                    static_cast<float>(sizew.extent.width),   // float    width
-                    static_cast<float>(sizew.extent.height),  // float    height
-                    0.0f,                                       // float    minDepth
-                    1.0f,                                       // float    maxDepth
-                };
-
-                SetViewportStateDynamically( CommandBuffer, 0, { viewport } );
-
-                VkRect2D scissor = 
-                {
-                    {                                           // VkOffset2D     offset
-                        0,                                          // int32_t        x
-                        0                                           // int32_t        y
-                    },
-                    {                                           // VkExtent2D     extent
-                        sizew.extent.width,                       // uint32_t       width
-                        sizew.extent.height                       // uint32_t       height
-                    }
-                };
-                
-                SetScissorStateDynamically( CommandBuffer, 0, { scissor } );
-
-                for(int i = 0; i < maxLinesScreen; i++)
-                {
-                    if( !letters[i]->draw_1(CommandBuffer, framebuffer, sizew) )
-                    {
-                        return false;
-                    }
-                }                
-
-                EndRenderPass( command_buffer[i] );
-
-                if( !EndCommandBufferRecordingOperation( command_buffer[i] ) ) {
-                    return false;
-                }
-                
-                return true;
-            };
-
-            return IncreasePerformanceThroughIncreasingTheNumberOfSeparatelyRenderedFrames( LogicalDevice, GraphicsQueue.Handle, PresentQueue.Handle,
-            Swapchain.Handle.Object.Handle, Swapchain.Size, Swapchain.ImageViewsRaw, RenderPass, {}, prepare_frame, FramesResources );
+            }      
         }    
 
         private:
